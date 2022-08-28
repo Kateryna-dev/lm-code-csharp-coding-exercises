@@ -1,26 +1,32 @@
 ﻿using System;
+using Exercises.Models;
+
 namespace Exercises
 {
     public class Exercise002
     {
-        // 👉 Remember to delete all unnecessary comments (like this one) when you're done! 
+        const string MANCHESTER = "Manchester";
 
-        public bool IsFromManchester(/* Person person */)
+        public bool IsFromManchester(Person person)
         {
-            // 👉 DON'T FORGET to uncomment the tests in Exercise002Tests.cs 
-            // Uncomment the parameter above and delete this comment
+            if (person == null) 
+            {   
+                return false;
+            }
 
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            // Will retun true if person is from Manchester. Otherwise false
+            return person.City == MANCHESTER;
         }
 
-        public bool CanWatchFilm(/*Person person, int ageLimit*/)
+        public bool CanWatchFilm(Person person, int ageLimit)
         {
-            // 👉 DON'T FORGET to uncomment the tests in Exercise002Tests.cs 
-            // Uncomment the parameters above and delete this comment
+            if (person == null) 
+            {
+                return false;
+            }
 
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            // Will retun true if age of person is equal or bigger than limit. Otherwise false
+            return person.Age >= ageLimit;
         }
     }
 }

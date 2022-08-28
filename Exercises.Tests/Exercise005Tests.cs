@@ -65,5 +65,32 @@ namespace Exercises.Tests
         {
             Exercise005.IsPangram("the 1 quick brown fox jumps over the 2 lazy dogs").Should().Be(true);
         }
+
+
+        //Added tests
+        [Test]
+        public void IsPangram_Should_Return_False_For_Null_Sentence()
+        {
+            Exercise005.IsPangram(null).Should().Be(false);
+        }
+
+        [Test]
+        public void IsPangram_Should_Return_True_For_UpperCase_Pangram()
+        {
+            Exercise005.IsPangram("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG").Should().Be(true);
+        }
+
+        [Test]
+        public void IsPangram_Should_Return_True_For_Pangram_With_Punctuation_Marks()
+        {
+            Exercise005.IsPangram("the quick, brown-fox jumps. over the lazy dog!?").Should().Be(true);
+        }
+
+        [Test]
+        public void IsPangram_Should_Return_True_For_Pangram_With_Ukrainian_Symbols()
+        {
+            Exercise005.IsPangram("the quick brown fox jumps over the lazy dog. абвгґдеєжзиії").Should().Be(true);
+        }
+
     }
 }

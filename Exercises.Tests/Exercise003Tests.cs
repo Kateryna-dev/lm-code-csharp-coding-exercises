@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
+using System;
 
 namespace Exercises.Tests
 {
@@ -14,6 +15,16 @@ namespace Exercises.Tests
         }
 
         [Test]
+        public void Given_Raspberry_Ripple_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
+        {
+            string iceCreamFlavour = "Raspberry Ripple";
+            int expectedCode = 1;
+
+            Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
+        }
+
+
+        [Test]
         public void Given_Chocolate_Chip_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
         {
             string iceCreamFlavour = "Mint Chocolate Chip";
@@ -21,6 +32,7 @@ namespace Exercises.Tests
 
             Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
         }
+
 
         [Test]
         public void Given_Mango_Sorbet_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
@@ -32,20 +44,55 @@ namespace Exercises.Tests
         }
 
         [Test]
-        public void Given_Raspberry_Ripple_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
-        {
-            string iceCreamFlavour = "Raspberry Ripple";
-            int expectedCode = 1;
-
-            Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
-        }
-
-        [Test]
         public void Ice_Cream_Flavours_Should_Return_All_Flavours()
         {
             string[] expected = { "Pistachio", "Raspberry Ripple", "Vanilla", "Mint Chocolate Chip", "Chocolate", "Mango Sorbet" };
 
             Exercise003.IceCreamFlavours.Should().Equal(expected);
         }
+
+
+        //Added tests
+        [Test]
+        public void Given_Pistachio_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
+        {
+            string iceCreamFlavour = "Pistachio";
+            int expectedCode = 0;
+
+            Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
+        }
+
+        [Test]
+        public void Given_Vanilla_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
+        {
+            string iceCreamFlavour = "Vanilla";
+            int expectedCode = 2;
+
+            Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
+        }
+
+        [Test]
+        public void Given_Chocolate_GetIceCreamCode_Should_Return_Correct_Ice_Cream_Code()
+        {
+            string iceCreamFlavour = "Chocolate";
+            int expectedCode = 4;
+
+            Exercise003.IceCreamCode(iceCreamFlavour).Should().Be(expectedCode);
+        }
+
+        [Test]
+        public void Given_Null_Flavour_Should_Throw_Exception()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => Exercise003.IceCreamCode(null));
+            Assert.That(ex.Message, Is.EqualTo("Wrong flavour"));
+        }
+
+        [Test]
+        public void Given_Wrong_Flavour_Should_Throw_Exception()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => Exercise003.IceCreamCode("Pineapple"));
+            Assert.That(ex.Message, Is.EqualTo("Wrong flavour"));
+        }
+
     }
 }
